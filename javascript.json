@@ -1,8 +1,53 @@
 {
-	"Console Log": {
-		"prefix": "cl",
-		"body": "console.log($1);",
-		"description": "Console Log"
+	"Index Export": {
+		"prefix": "indx",
+		"body": ["export { $1 } from './$1';"],
+		"description": "Index Export"
+	},
+	"New Component": {
+		"prefix": "ncp",
+		"body": [
+			"import React from 'react';",
+			"import PropTypes from 'prop-types';",
+			"import './${TM_FILENAME_BASE/(.*)/${1:/downcase}/}.css';",
+			"",
+			"export const ${TM_FILENAME_BASE} = ({ ${2:props} ...rest }) => {",
+			"  return (",
+			"    <${3:element} {...rest}>",
+			"    </${3:element}>",
+			"  );",
+			"};",
+			"",
+			"${TM_FILENAME_BASE}.propTypes = {};",
+			"",
+			"${TM_FILENAME_BASE}.defaultProps = {};"
+		],
+		"description": "New Component"
+	},
+	"Prop Types w/Defaults": {
+		"prefix": "ptwd",
+		"body": ["${1:componentName}.propTypes = {", "  $2", "};", "", "${1:componentName}.defaultProps = {", " $3", "};"],
+		"description": "Prop Types w/Defaults"
+	},
+	"New Story": {
+		"prefix": "sbnew",
+		"body": [
+			"import React from 'react';",
+			"",
+			"import { ${1:componentName} } from './${1:componentName}';",
+			"",
+			"export default {",
+			"  title: '${1:componentName}',",
+			"  component: ${1:componentName},",
+			"  args: {},",
+			"};",
+			"",
+			"const Template = (args) => <${1:componentName} {...args} />;",
+			"",
+			"export const ${2:variantName} = Template.bind({});",
+			"${2:variantName}.args = {};"
+		],
+		"description": "New Story"
 	},
 	"Story Export Default": {
 		"prefix": "sbdf",
@@ -30,26 +75,5 @@
 		"prefix": "sbba",
 		"body": ["export const ${1:exportName} = Template.bind({});", "${1:exportName}.args = {", "  $2", "};"],
 		"description": "Template Bind w/Args"
-	},
-	"Component Function w/Props": {
-		"prefix": "cfwp",
-		"body": [
-			"function ${1:componentName}(props) {",
-			"  const { ${2:propsToDestructure}, ...rest } = props;",
-			"  return (",
-			"    <div {...rest}>",
-			"      $3",
-			"    </div>",
-			"  );",
-			"}",
-			"",
-			"export default ${1:componentName};"
-		],
-		"description": "Component Function w/Props"
-	},
-	"Prop Types w/Defaults": {
-		"prefix": "ptwd",
-		"body": ["${1:componentName}.propTypes = {", "  $2", "};", "", "${1:componentName}.defaultProps = {", " $3", "};"],
-		"description": "Prop Types w/Defaults"
 	}
 }
