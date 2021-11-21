@@ -1,0 +1,22 @@
+{
+	"Docs MDX": {
+		"prefix": "sbdocs",
+		"body": [
+			"import { ArgsTable, Canvas, Story } from '@storybook/addon-docs';",
+			"import { ${1:componentName} } from './${1:componentName}';",
+			"",
+			"# ${1:componentName}",
+			"",
+			"<Story id=\"\" />",
+			"",
+			"## Available Args",
+			"",
+			"<ArgsTable of={${1:componentName}} />",
+			"",
+			"<Canvas>",
+			"  <Story id=\"\" />",
+			"</Canvas>"
+		],
+		"description": "Docs MDX"
+	}
+}
