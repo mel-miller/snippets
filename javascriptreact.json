@@ -1,0 +1,85 @@
+{
+	"Index Export": {
+		"prefix": "indx",
+		"body": ["export { $1 } from './$1';"],
+		"description": "Index Export"
+	},
+	"New Component": {
+		"prefix": "ncp",
+		"body": [
+			"import React from 'react';",
+			"import PropTypes from 'prop-types';",
+			"import './${TM_FILENAME_BASE/(.*)/${1:/downcase}/}.css';",
+			"",
+			"export const ${TM_FILENAME_BASE} = ({ ${2:props} ...rest }) => {",
+			"  return (",
+			"    <${3:element} {...rest}>",
+			"    </${3:element}>",
+			"  );",
+			"};",
+			"",
+			"${TM_FILENAME_BASE}.propTypes = {};",
+			"",
+			"${TM_FILENAME_BASE}.defaultProps = {};"
+		],
+		"description": "New Component"
+	},
+	"Prop Types w/Defaults": {
+		"prefix": "ptwd",
+		"body": ["${1:componentName}.propTypes = {", "  $2", "};", "", "${1:componentName}.defaultProps = {", " $3", "};"],
+		"description": "Prop Types w/Defaults"
+	},
+	"New Story": {
+		"prefix": "sbnew",
+		"body": [
+			"import React from 'react';",
+			"",
+			"import { ${1:componentName} } from './${1:componentName}';",
+			"import ${1:componentName}Docs from './${1:componentName}.docs.mdx';",
+			"",
+			"export default {",
+			"  title: '${1:componentName}',",
+			"  component: ${1:componentName},",
+			"  args: {},",
+			"  parameters: {",
+			"    docs: {",
+			"      page: ${1:componentName}Docs,",
+			"    },",
+			"  },",
+			"};",
+			"",
+			"const Template = (args) => <${1:componentName} {...args} />;",
+			"",
+			"export const ${2:variantName} = Template.bind({});",
+			"${2:variantName}.args = {};"
+		],
+		"description": "New Story"
+	},
+	"Story Export Default": {
+		"prefix": "sbdf",
+		"body": [
+			"export default {",
+			"  title: \"$1\",",
+			"  component: $2,",
+			"  decorators: [ $3 ],",
+			"  parameters: { $4 }",
+			"};"
+		],
+		"description": "Story Default"
+	},
+	"Story Template": {
+		"prefix": "sbt",
+		"body": ["const Template = (args) => <${1:componentName} {...args} />;"],
+		"description": "Story Template"
+	},
+	"Template Bind": {
+		"prefix": "sbb",
+		"body": ["export const ${1:exportName} = Template.bind({});"],
+		"description": "Template Bind"
+	},
+	"Template Bind w/Args": {
+		"prefix": "sbba",
+		"body": ["export const ${1:exportName} = Template.bind({});", "${1:exportName}.args = {", "  $2", "};"],
+		"description": "Template Bind w/Args"
+	}
+}
