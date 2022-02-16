@@ -109,5 +109,10 @@
 			"export const ${TM_FILENAME_BASE/([^.]+).*/${1:/capitalize}/} = Template.bind({});"
 		],
 		"description": "Twig Story"
+	},
+	"Drupal Behavior": {
+		"prefix": "drbh",
+		"body": ["Drupal.behaviors.${TM_FILENAME_BASE} = {", "  attach(context) {", "    	", "  },", "};", ""],
+		"description": "Drupal Behavior"
 	}
 }
