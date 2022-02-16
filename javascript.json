@@ -81,5 +81,33 @@
 		"prefix": "sbba",
 		"body": ["export const ${1:exportName} = Template.bind({});", "${1:exportName}.args = {", "  $2", "};"],
 		"description": "Template Bind w/Args"
+	},
+	"Twig Story": {
+		"prefix": "sbtwig",
+		"body": [
+			"import Twig${TM_FILENAME_BASE/([^.]+).*/${1:/capitalize}/} from \"./${TM_FILENAME_BASE/([^.]+).*/${1}/}.twig\";",
+			"import ${TM_FILENAME_BASE/([^.]+).*/${1:/capitalize}/}Source from \"!!raw-loader!./${TM_FILENAME_BASE/([^.]+).*/${1}/}.twig\";",
+			"",
+			"import \"./${TM_FILENAME_BASE/([^.]+).*/${1}/}.js\";",
+			"",
+			"",
+			"export default {",
+			"  title: \"Components/${TM_FILENAME_BASE/([^.]+).*/${1:/capitalize}/}\",",
+			"  parameters: {",
+			"    componentSource: {",
+			"      code: ${TM_FILENAME_BASE/([^.]+).*/${1:/capitalize}/}Source,",
+			"      language: \"twig\",",
+			"    },",
+			"  },",
+			"  argTypes: {},",
+			"  args: {},",
+			"};",
+			"",
+			"const Template = ({}) =>",
+			"	Twig${TM_FILENAME_BASE/([^.]+).*/${1:/capitalize}/}({});",
+			"",
+			"export const ${TM_FILENAME_BASE/([^.]+).*/${1:/capitalize}/} = Template.bind({});"
+		],
+		"description": "Twig Story"
 	}
 }
